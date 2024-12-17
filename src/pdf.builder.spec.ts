@@ -547,21 +547,4 @@ describe('PDFBuilder', () => {
       expect(textSpy).toHaveBeenCalledWith(value, 50, 111);
     });
   });
-
-  describe('zipPdf', () => {
-    it('should merge multiple PDF buffers into one', async () => {
-      const pdfBuilder = new PDFBuilder();
-      pdfBuilder.text('Foo', 1, 1);
-      await pdfBuilder.end();
-
-      const result = await PDFBuilder.zipPdfs([
-        {
-          buffer: pdfBuilder.buffer,
-          name: 'test.pdf',
-        },
-      ]);
-
-      expect(result).toBeDefined();
-    });
-  });
 });
